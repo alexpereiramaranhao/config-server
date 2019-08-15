@@ -10,7 +10,7 @@ ARG server_port=$server_port
 ENV spring_application_name config-server
 ARG spring_application_name=$spring_application_name
 
-ENV spring_profiles_active homolog
+ENV spring_profiles_active hmlg
 ARG spring_profiles_active=$spring_profiles_active
 
 ENV management_endpoints_web_exposure_include *
@@ -18,29 +18,29 @@ ARG management_endpoints_web_exposure_include=$management_endpoints_web_exposure
 
 ENV management_security_enabled false
 ARG management_security_enabled=$management_security_enabled
-
 # FIM: Configuracoes Gerais Spring Cloud
+
 # Configuracoes spring boot admin
-#ENV spring_boot_admin_client_enabled true
-#ARG spring_boot_admin_client_enabled=$spring_boot_admin_client_enabled
+ENV spring_boot_admin_client_enabled true
+ARG spring_boot_admin_client_enabled=$spring_boot_admin_client_enabled
 
-#ENV spring_boot_admin_client_url http://admin-server.hmlg.svc:8080/
-#ARG spring_boot_admin_client_url=$spring_boot_admin_client_url
+ENV spring_boot_admin_client_url http://admin-server.hmlg.svc:8080/
+ARG spring_boot_admin_client_url=$spring_boot_admin_client_url
 
-#ENV spring_boot_admin_client_auto_registration true
-#ARG spring_boot_admin_client_auto_registration=$spring_boot_admin_client_auto_registration
+ENV spring_boot_admin_client_auto_registration true
+ARG spring_boot_admin_client_auto_registration=$spring_boot_admin_client_auto_registration
 
-#ENV spring_boot_admin_client_prefer_ip true
-#ARG spring_boot_admin_client_prefer_ip=$spring_boot_admin_client_prefer_ip
+ENV spring_boot_admin_client_prefer_ip true
+ARG spring_boot_admin_client_prefer_ip=$spring_boot_admin_client_prefer_ip
 # FIM Configuracoes spring boot admin
 
-ENV spring_cloud_config_server_git_uri http://gitlab.saneago.com.br/saneago/suporte/ti/plataforma/application-config.git
+ENV spring_cloud_config_server_git_uri http://gitlab.netoralves.com/netoralves/application-config.git
 ARG spring_cloud_config_server_git_uri=$spring_cloud_config_server_git_uri
 
-ENV spring_cloud_config_server_git_username app-config-service
+ENV spring_cloud_config_server_git_username netoralves
 ARG spring_cloud_config_server_git_username=$spring_cloud_config_server_git_username
 
-ENV spring_cloud_config_server_git_password app-config@2019
+ENV spring_cloud_config_server_git_password neto@123
 ARG spring_cloud_config_server_git_password=$spring_cloud_config_server_git_password
 
 RUN echo jar_file: $jar_file
@@ -63,6 +63,10 @@ ENTRYPOINT [ \
 	, "--spring.profiles.active=${spring_profiles_active}" \
 	, "--management.endpoints.web.exposure.include=${management_endpoints_web_exposure_include}" \
 	, "--management.security.enabled=${management_security_enabled}" \
+	, "--spring.boot.admin.client.enabled=${spring_boot_admin_client_enabled}" \
+	, "--spring.boot.admin.client.url=${spring_boot_admin_client_url}" \
+	, "--spring.boot.admin.client.auto-registration=${spring_boot_admin_client_auto_registration}" \
+	, "--spring.boot.admin.client.prefer-ip=${spring_boot_admin_client_prefer_ip}" \
 	, "--spring.cloud.config.server.git.uri=${spring_cloud_config_server_git_uri}" \
 	, "--spring.cloud.config.server.git.username=${spring_cloud_config_server_git_username}" \
 	, "--spring.cloud.config.server.git.password=${spring_cloud_config_server_git_password}" \

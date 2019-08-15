@@ -1,19 +1,19 @@
 #!/bin/bash
 #By Francisco Neto <netoralves@gmail.com>
-# =======================MICROSERVICOS - SPRING CLOUD CONFIG SERVER=======================================
+# =======================MICROSERVICOS - CONFIG SERVER=======================================
 #CONFIG-SERVER
 app_name="config-server"
-git_uri="git/config-server.git"
-#=========================================================================================================
+git_uri="JURIS"
+#=============================================================================================
 
 # VARS
-git_user="app-config-service"
-git_password="app-config@2019"
-git_branches="master"
-workspace="/tmp"
-external_uri="config-server.cloudhom.saneago.com.br"
-context="/"
-ocp="https://ocp.saneago.com.br"
+git_user="GIT_USER"
+git_password="PASS_USER"
+git_branches="develop"
+workspace="/workspace"
+external_uri="EXTERNAL_URI"
+context="/email"
+
 #=============================================================================================
 
 #1. CLONE/PULL DO REPO GIT
@@ -26,11 +26,9 @@ ocp="https://ocp.saneago.com.br"
 #2. SOURCE COMPILE
 #MAVEN
 #cd $workspace/$app_name; mvn clean install
-#mvn clean install
 
 #3.LOGIN ON OPENSHIFT MASTER
-#oc login $ocp -u system:admin
-oc project config-server
+#oc login -u system:admin
 
 #3. CREATE THE BUILD
 oc new-build --binary --name=$app_name -l app=$app_name
@@ -47,5 +45,5 @@ oc create service clusterip $app_name --tcp=8080:8080
 #7.EXPOSE THE SVC TO EXTERNAL ACCESS
 #oc expose svc $app_name
 
-#8.EXPOSE THE SVC (OPTIONAL)
-oc expose svc $app_name --hostname=$external_uri --path=$context
+#8.EXPOSE THE SVC AS A CONTEXT TO JURIS-FRONT (OPTIONAL)
+#oc expose svc $app_name --hostname=$external_uri --path=$context
