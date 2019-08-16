@@ -7,12 +7,12 @@ git_uri="JURIS"
 #=============================================================================================
 
 # VARS
-git_user="GIT_USER"
-git_password="PASS_USER"
-git_branches="develop"
+git_user="app-config-service"
+git_password="app-config@2019"
+git_branches="master"
 workspace="/workspace"
-external_uri="EXTERNAL_URI"
-context="/email"
+external_uri="config-server.cloudhom.saneago.com.br" #tem que ser uma variável dentro do pipeline
+context="/config-server"
 
 #=============================================================================================
 
