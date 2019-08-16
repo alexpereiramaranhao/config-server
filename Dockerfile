@@ -10,7 +10,7 @@ ARG server_port=$server_port
 ENV spring_application_name config-server
 ARG spring_application_name=$spring_application_name
 
-ENV spring_profiles_active hmlg
+ENV spring_profiles_active homolog
 ARG spring_profiles_active=$spring_profiles_active
 
 ENV management_endpoints_web_exposure_include *
@@ -24,7 +24,7 @@ ARG management_security_enabled=$management_security_enabled
 ENV spring_boot_admin_client_enabled true
 ARG spring_boot_admin_client_enabled=$spring_boot_admin_client_enabled
 
-ENV spring_boot_admin_client_url http://admin-server.hmlg.svc:8080/
+ENV spring_boot_admin_client_url http://admin-server.config-server.svc:8080/
 ARG spring_boot_admin_client_url=$spring_boot_admin_client_url
 
 ENV spring_boot_admin_client_auto_registration true
@@ -34,13 +34,13 @@ ENV spring_boot_admin_client_prefer_ip true
 ARG spring_boot_admin_client_prefer_ip=$spring_boot_admin_client_prefer_ip
 # FIM Configuracoes spring boot admin
 
-ENV spring_cloud_config_server_git_uri http://gitlab.netoralves.com/netoralves/application-config.git
+ENV spring_cloud_config_server_git_uri http://gitlab.saneago.com.br/saneago/suporte/ti/plataforma/application-config.git
 ARG spring_cloud_config_server_git_uri=$spring_cloud_config_server_git_uri
 
-ENV spring_cloud_config_server_git_username netoralves
+ENV spring_cloud_config_server_git_username app-config-service
 ARG spring_cloud_config_server_git_username=$spring_cloud_config_server_git_username
 
-ENV spring_cloud_config_server_git_password neto@123
+ENV spring_cloud_config_server_git_password app-config@2019
 ARG spring_cloud_config_server_git_password=$spring_cloud_config_server_git_password
 
 RUN echo jar_file: $jar_file

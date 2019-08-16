@@ -6,7 +6,7 @@ app_name="config-server"
 #===============================================================================================
 
 # VARS
-git_branches="hmlg"
+git_branches="master"
 workspace="/tmp"
 
 #=============================================================================================
@@ -15,7 +15,7 @@ workspace="/tmp"
 if [ -d "$workspace/$app_name" ]; then
 	cd $workspace/$app_name && git fetch && git checkout $git_branches && git pull
 else
-	git clone --single-branch -b $git_branches https://github.com/netoralves/config-server.git
+	git clone --single-branch -b $git_branches http://gitlab.saneago.com.br/saneago/suporte/ti/plataforma/config-server.git
 fi
 
 #2. SOURCE COMPILE
